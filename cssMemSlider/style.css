@@ -1,10 +1,14 @@
+body {
+  background-image: url("bg.jpg");
+}
+
 .box {
   height: 30rem;
   width: 50rem;
   background-image: -webkit-gradient(linear, left top, right top, from(Red), color-stop(Orange), color-stop(Yellow), color-stop(Green), color-stop(Blue), color-stop(Indigo), to(Violet));
   background-image: linear-gradient(to right, Red, Orange, Yellow, Green, Blue, Indigo, Violet);
   color: #fff;
-  border: solid 3px black;
+  border: solid 3px brown;
   margin: auto;
   padding: 1rem;
   gap: 1rem;
@@ -14,82 +18,297 @@
       grid-template-rows: 2fr 1fr;
 }
 
+@media (max-width: 425px) {
+  .box {
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    height: 27rem;
+    width: 15rem;
+  }
+}
+
+@media (min-width: 426px) {
+  .box {
+    -ms-grid-rows: 2fr 1fr;
+        grid-template-rows: 2fr 1fr;
+    height: 30rem;
+    width: 50rem;
+  }
+}
+
 .slide {
-  content: url("http://placekitten.com/200/210");
+  display: block;
+  background-image: url("http://placekitten.com/200/210");
+  -webkit-transition: background-image 0.3s;
+  transition: background-image 0.3s;
+  background-repeat: no-repeat;
 }
 
-.slide:active {
-  content: url("http://placekitten.com/200/220");
+@media (max-width: 425px) {
+  .under-slide {
+    display: -ms-inline-grid;
+    display: inline-grid;
+    -ms-grid-rows: 1fr 3fr;
+        grid-template-rows: 1fr 3fr;
+  }
+  .under-slide .description {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  .under-slide .labels {
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
+  }
 }
 
-.under-slide {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 3fr 1fr;
-      grid-template-columns: 3fr 1fr;
+@media (min-width: 426px) {
+  .under-slide {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 3fr 1fr;
+        grid-template-columns: 3fr 1fr;
+  }
 }
 
 .description {
-  background-color: green;
-}
-
-.switch {
-  background-color: black;
+  background-image: -webkit-gradient(linear, right top, left top, from(Red), color-stop(Orange), color-stop(Yellow), color-stop(Green), color-stop(Blue), color-stop(Indigo), to(Violet));
+  background-image: linear-gradient(to left, Red, Orange, Yellow, Green, Blue, Indigo, Violet);
   padding: 1rem;
 }
 
-.button-area {
-  display: inline-block;
-  padding-bottom: 1rem;
+.labels {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background: rgba(0, 0, 0, 0.25);
 }
 
-.button-area:hover .button {
-  background-color: red;
+@media (max-width: 425px) {
+  .labels {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 
-.button-area:hover input[type=radio] {
-  background-color: green;
+@media (max-width: 425px) {
+  #radio-1:checked ~ .box .slide {
+    background-image: url(1_mini.png);
+  }
+  #radio-2:checked ~ .box .slide {
+    background-image: url(2_mini.png);
+  }
+  #radio-3:checked ~ .box .slide {
+    background-image: url(3_mini.png);
+  }
+  #radio-4:checked ~ .box .slide {
+    background-image: url(4_mini.jpg);
+  }
 }
 
-.button-area:active .button {
-  background-color: white;
+@media (min-width: 426px) {
+  #radio-1:checked ~ .box .slide {
+    background-image: url(1.png);
+  }
+  #radio-2:checked ~ .box .slide {
+    background-image: url(2.png);
+  }
+  #radio-3:checked ~ .box .slide {
+    background-image: url(3.png);
+  }
+  #radio-4:checked ~ .box .slide {
+    background-image: url(4.jpg);
+  }
 }
 
-.slide + .button-area:active {
-  content: url("http://placekitten.com/200/220");
+@media (min-width: 426px) {
+  #radio-4:checked ~ .box {
+    background-image: url(4.jpg);
+    height: 60rem;
+  }
 }
 
-.button {
-  display: inline-block;
-  background-color: blue;
-  border: solid 3px white;
-  padding: 0.5rem;
-  margin: 0.1rem;
-  border-radius: 50%;
+#radio-1:checked ~ .box .under-slide .labels #button-1 {
+  background-color: black;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  -webkit-transition: border 0.15s;
+  transition: border 0.15s;
 }
 
-.button:hover {
-  background-color: green;
+#radio-1:checked ~ .box .under-slide .labels #button-1:hover {
+  border: solid 3px black;
+  cursor: default;
+}
+
+#radio-2:checked ~ .box .under-slide .labels #button-2 {
+  background-color: black;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  -webkit-transition: border 0.15s;
+  transition: border 0.15s;
+}
+
+#radio-2:checked ~ .box .under-slide .labels #button-2:hover {
+  border: solid 3px black;
+  cursor: default;
+}
+
+#radio-3:checked ~ .box .under-slide .labels #button-3 {
+  background-color: black;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  -webkit-transition: border 0.15s;
+  transition: border 0.15s;
+}
+
+#radio-3:checked ~ .box .under-slide .labels #button-3:hover {
+  border: solid 3px black;
+  cursor: default;
+}
+
+#radio-4:checked ~ .box .under-slide .labels #button-4 {
+  background-color: black;
+  border: solid 3px #00008B;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  -webkit-transition: border 0.15s;
+  transition: border 0.15s;
+}
+
+#radio-4:checked ~ .box .under-slide .labels #button-4:hover {
+  border: solid 3px black;
+  cursor: default;
+}
+
+.txt {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  display: block;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+@media (max-width: 425px) {
+  .txt {
+    font-size: 1.15rem;
+    margin-bottom: -1.66rem;
+  }
+}
+
+@media (min-width: 426px) {
+  .txt {
+    font-size: 1.5rem;
+    margin-bottom: -2.05rem;
+  }
+}
+
+#txt-1 {
+  opacity: 0;
+}
+
+@media (max-width: 425px) {
+  #txt-1 {
+    margin-bottom: -3.2rem;
+  }
+}
+
+#txt-2 {
+  opacity: 0;
+}
+
+@media (max-width: 425px) {
+  #txt-2 {
+    margin-bottom: -7.8rem;
+  }
+}
+
+@media (min-width: 426px) {
+  #txt-2 {
+    margin-bottom: -6.15rem;
+  }
+}
+
+#txt-3 {
+  opacity: 0;
+}
+
+#txt-4 {
+  opacity: 0;
+}
+
+#radio-1:checked ~ .box .under-slide .description #txt-1 {
+  opacity: 1;
+}
+
+#radio-2:checked ~ .box .under-slide .description #txt-2 {
+  opacity: 1;
+}
+
+#radio-3:checked ~ .box .under-slide .description #txt-3 {
+  opacity: 1;
+}
+
+#radio-4:checked ~ .box .under-slide .description #txt-4 {
+  opacity: 1;
+}
+
+#radio-4:checked ~ .box .under-slide .description {
+  background-image: url(petrosyan.gif);
 }
 
 input[type=radio] {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-color: blue;
+}
+
+.button {
+  display: inline-block;
+  background-color: #00008B;
   width: 1rem;
   height: 1rem;
   padding: 0.5rem;
   margin: 0.1rem;
-  border: solid 3px white;
+  border: solid 3px blue;
   border-radius: 50%;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  -webkit-transition: border 0.15s;
+  transition: border 0.15s;
 }
 
-input[type=radio]:hover {
-  background-color: green;
+.button:hover {
+  border: solid 3px #00008B;
+  background-color: black;
+  cursor: pointer;
 }
 
-input[type=radio]:checked {
-  background: black;
+@media (max-width: 425px) {
+  .button {
+    height: 0.3rem;
+    width: 0.3rem;
+  }
+}
+
+@media (min-width: 426px) {
+  .button {
+    height: 1rem;
+    width: 1rem;
+  }
+}
+
+.button:checked {
+  background-color: black;
+  cursor: default;
+}
+
+.button:checked:hover {
+  border: solid 3px white;
+  background-color: black;
 }
 /*# sourceMappingURL=style.css.map */
