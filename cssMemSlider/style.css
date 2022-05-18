@@ -253,7 +253,12 @@ body {
 
 #radio-4:checked ~ .box .under-slide .description {
   background-image: url(petrosyan.gif);
-  max-height: 17.6rem;
+}
+
+@media (min-width: 426px) {
+  #radio-4:checked ~ .box .under-slide .description {
+    max-height: 17.6rem;
+  }
 }
 
 input[type=radio] {
